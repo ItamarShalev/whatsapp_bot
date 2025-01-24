@@ -1,0 +1,29 @@
+# Ignore Visual Studio Code project settings.
+.vscode
+
+# Ignore JetBreans project settings.
+.idea
+
+# QR code images.
+qr
+
+# Session data.
+session_data
+
+# Variables info.
+.env
+
+# Ignore binaraies installation packages.
+node_modules
+
+# Ignore js files (after compiled from ts files).
+dist
+
+# Ignore binaries installation packages config file.
+package-lock.json
+
+# Ignore converage report.
+coverage
+
+# Log files.
+*.log

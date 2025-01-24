@@ -1,0 +1,40 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+    Lint:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4.2.2
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v4.1.0
+              with:
+                  node-version: '22'
+
+            - name: Install ESLint
+              run: npm install eslint
+
+            - name: Run linter
+              run: npm run lint
+
+    Build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout code
+              uses: actions/checkout@v4.2.2
+
+            - name: Set up Node.js
+              uses: actions/setup-node@v4.1.0
+              with:
+                  node-version: '22'
+
+            - name: Install dependencies
+              run: npm install
+
+            - name: Build project
+              run: npm run build

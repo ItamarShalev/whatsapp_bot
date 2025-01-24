@@ -1,0 +1,54 @@
+# Ignore the git folder.
+.git
+
+# Ignore Github actions files.
+.github
+
+# Ignore .gitignore file.
+.gitignore
+
+# Ignore Docker ignore file.
+.dockerignore
+
+# Ignore Git attributes file.
+.gitattributes
+
+# Docker files.
+Dockerfile
+docker-compose.yaml
+
+# Ignore prettier config file.
+.prettierrc
+
+# Ignore Visual Studio Code project settings.
+.vscode
+
+# Ignore JetBreans project settings.
+.idea
+
+# QR code images.
+qr
+
+# Session data.
+session_data
+
+# Variables info.
+.env
+
+# Example variables info.
+.env.example
+
+# Ignore binaraies installation packages.
+node_modules
+
+# Ignore js files (after compiled from ts files).
+dist
+
+# Ignore binaries installation packages config file.
+package-lock.json
+
+# Ignore converage report.
+coverage
+
+# Log files.
+*.log

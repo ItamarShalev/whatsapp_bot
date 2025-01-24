@@ -1,0 +1,41 @@
+{
+    "compilerOptions": {
+        /* Language and Environment */
+        "target": "ES2022" /* Set the JavaScript language version for emitted JavaScript and include compatible library declarations. */,
+        "moduleDetection": "force" /* Control what method is used to detect module-format JS files. */,
+
+        /* Modules */
+        "module": "ES2022" /* Specify what module code is generated. */,
+        "resolveJsonModule": true /* Enable importing .json files. */,
+        "moduleResolution": "node" /* Determine how modules get resolved. */,
+
+        /* JavaScript Support */
+        "allowJs": true /* Allow JavaScript files to be a part of your program. Use the 'checkJS' option to get errors from these files. */,
+        "checkJs": true /* Enable error reporting in type-checked JavaScript files. */,
+        "baseUrl": "./src" /* Specify the base directory to resolve non-relative module names. */,
+        "outDir": "./dist" /* Specify an output folder for all emitted files. */,
+        "newLine": "lf" /* Set the newline character for emitting files. */,
+        "allowImportingTsExtensions": false, /* Allow importing of .ts files even when they cannot be resolved. */
+        "noEmit": false /* Disable emitting files from a compilation. */,
+        "listEmittedFiles": true, /* Print names of generated files part of the compilation. */
+
+        /* Interop Constraints */
+        "isolatedModules": true /* Ensure that each file can be safely transpiled without relying on other imports. */,
+        "verbatimModuleSyntax": false /* Do not transform or elide any imports or exports not marked as type-only, ensuring they are written in the output file's format based on the 'module' setting. */,
+        "esModuleInterop": true /* Emit additional JavaScript to ease support for importing CommonJS modules. This enables 'allowSyntheticDefaultImports' for type compatibility. */,
+        "allowSyntheticDefaultImports": true /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */,
+        "forceConsistentCasingInFileNames": true /* Ensure that casing is correct in imports. */,
+
+        /* Type Checking */
+        "strict": true /* Enable all strict type-checking options. */,
+        "strictNullChecks": true /* When type checking, take into account 'null' and 'undefined'. */,
+        "strictFunctionTypes": true /* When assigning functions, check to ensure parameters and the return values are subtype-compatible. */,
+        "strictBindCallApply": true /* Check that the arguments for 'bind', 'call', and 'apply' methods match the original function. */,
+        "strictPropertyInitialization": true /* Check for class properties that are declared but not set in the constructor. */,
+        "strictBuiltinIteratorReturn": true /* Built-in iterators are instantiated with a 'TReturn' type of 'undefined' instead of 'any'. */,
+        "skipLibCheck": true /* Skip type checking all .d.ts files. */
+    },
+
+    "include": ["src/**/*", "tests/**/*"],
+    "exclude": ["node_modules", "dist"]
+}
