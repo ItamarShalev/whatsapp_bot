@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "moduleResolution": "nodenext",
+    "target": "es2020",
+    "module": "NodeNext",
+    "outDir": "dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "types": ["vitest/globals", "node"]
+  },
+  "include": ["src", "tests"]
+}

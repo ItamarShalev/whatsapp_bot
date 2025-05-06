@@ -1,7 +1,8 @@
-# Ignore Visual Studio Code project settings.
+# Ignore Visual Studio Code and IntelliJ IDEA project settings.
 .vscode
+.idea
 
-# Ignore JetBreans project settings.
+# Ignore JetBrains project settings.
 .idea
 
 # QR code images.
@@ -19,10 +20,9 @@ node_modules
 # Ignore js files (after compiled from ts files).
 dist
 
-# Ignore binaries installation packages config file.
-package-lock.json
+*.orig
 
-# Ignore converage report.
+# Ignore coverage report.
 coverage
 
 # Log files.
