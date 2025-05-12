@@ -1,0 +1,45 @@
+# Ignore tests related files.
+tests
+
+# Git related files.
+.git*
+
+# Ignore templates related files.
+*.md
+
+# Ignore github actions related files.
+.github
+
+# Lint related files.
+.eslintrc*
+.prettier*
+
+# Ignore Visual Studio Code and IntelliJ IDEA project settings.
+.vscode
+.idea
+
+# Ignore JetBrains project settings.
+.idea
+
+# QR code images.
+qr
+
+# Whatsapp Session cache.
+whatsapp_session_cache
+
+# Variables info.
+.env
+
+# Ignore binaraies installation packages.
+node_modules
+
+# Ignore js files (after compiled from ts files).
+dist
+
+*.orig
+
+# Ignore coverage report.
+coverage
+
+# Log files.
+*.log
