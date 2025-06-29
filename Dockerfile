@@ -1,20 +1,14 @@
-# ---- Build Stage ----
-FROM node:22-slim AS builder
-WORKDIR /app
+FROM node:lts-alpine
 
-ENV NODE_ENV=development
+WORKDIR /app
 
 COPY package*.json ./
 RUN npm ci
 
 COPY . .
-RUN npm run build:bundle
 
-# ---- Production Stage ----
-FROM node:22-slim AS runner
-WORKDIR /app
+RUN npx --yes prisma generate
 
-COPY --from=builder app/dist/index.js ./index.js
+ENV DATABASE_URL=file:./data/database.sqlite
 
-ENV NODE_ENV=production
-CMD ["node", "index.js"]
+CMD ["sh", "-c", "npx --yes prisma migrate deploy && npx --yes tsx src/index.ts"]
