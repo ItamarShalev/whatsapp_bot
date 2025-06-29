@@ -1,0 +1,45 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// Model to store WhatsApp contacts/users
+model Contact {
+  id                Int     @id @default(autoincrement())
+  lid               String? @unique // Local ID for the contact, if available
+  jid               String? @unique // The WhatsApp JID (e.g., '1234567890@s.whatsapp.net', '12345-12345@g.us')
+  phoneNumber       String? @unique // Phone number in international format (+CCXXXXXX)
+  name              String? // Display name from WhatsApp or custom name
+  pushName          String? // The push name received in messages
+  notify            String? // name of the contact, the contact has set on their own on WA
+  isGroup           Boolean @default(false)
+  isStaff           Boolean @default(false) // For internal staff contacts
+  isAdmin           Boolean @default(false) // If the contact is an admin in a group
+  isBlocked         Boolean @default(false) // If the contact is blocked
+  profilePictureUrl String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  Groups      Group[] @relation("GroupParticipants") // Groups where this contact is a participant
+  ownedGroups Group[] @relation("GroupOwner") // Groups where this contact is the owner
+}
+
+model Group {
+  id            Int     @id @default(autoincrement())
+  name          String // Name of the group
+  jid           String  @unique // The WhatsApp JID of the group (e.g., '12345-12345@g.us')
+  description   String? // Group description
+  memberAddMode Boolean @default(false) // If the group is public or private
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  ownerId      Int? // JID of the group owner
+  owner        Contact?  @relation("GroupOwner", fields: [ownerId], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  participants Contact[] @relation("GroupParticipants")
+}
