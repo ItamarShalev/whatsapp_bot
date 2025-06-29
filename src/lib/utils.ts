@@ -2,6 +2,7 @@ import fs from "fs";
 import path from "path";
 import { z } from "zod";
 import { FullJid, jidDecode, proto } from "@whiskeysockets/baileys";
+import env from "./env";
 
 /**
  * Converts a time string in the format of "10ms", "5s", or "2m" to milliseconds.
@@ -33,7 +34,7 @@ export function deltaTimeToMs(timeStr: `${number}${"ms" | "s" | "m"}`): number {
  * @param lang - The language for which to load templates (e.g., "en", "fr").
  * @returns A record where keys are template names and values are the markdown content.
  */
-export function loadMarkdownTemplatesForLang(lang: string): Record<string, string> {
+export function loadMarkdownTemplatesForLang(lang: typeof env.LANGUAGE): Record<string, string> {
   const templatesDir = path.join(process.cwd(), "templates", lang);
 
   if (!fs.existsSync(templatesDir)) {
