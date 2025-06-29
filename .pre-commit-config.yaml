@@ -48,8 +48,8 @@ repos:
 
       - id: bot
         alias: build
-        name: "bot: npm run build"
-        entry: npm run build
+        name: "bot: npm run build:check"
+        entry: npm run build:check
         language: system
         always_run: true
         pass_filenames: false
