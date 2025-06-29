@@ -34,7 +34,7 @@ jobs:
         uses: ./.github/actions/setup-node
 
       - name: Build project
-        run: npm run build
+        run: npm run build:check
 
   test:
     runs-on: ubuntu-latest
