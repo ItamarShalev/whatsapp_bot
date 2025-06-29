@@ -1,8 +1,6 @@
-FROM node:22-slim
+FROM node:lts-alpine
 
 WORKDIR /app
-
-ENV NODE_ENV=development
 
 COPY package*.json ./
 
@@ -10,10 +8,8 @@ RUN npm ci
 
 COPY . .
 
-RUN npx prisma generate
+RUN npx --yes prisma generate
 
-RUN npm run build
+ENV DATABASE_URL=file:./data/database.sqlite
 
-ENV NODE_ENV=production
-
-CMD ["node", "dist/index.js"]
+CMD ["sh", "-c", "npx --yes prisma migrate deploy && npx --yes tsx src/index.ts"]
