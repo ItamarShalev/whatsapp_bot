@@ -33,3 +33,12 @@ coverage
 
 # Python virtual environment
 .venv/
+
+# ignore session
+session/
+
+# Ignore prizma build artifacts.
+generated/prisma/
+
+# Ignore database files.
+/data/database.sqlite
