@@ -18,7 +18,14 @@ Thank you for your interest in contributing!
    npm ci
    ```
 
-4. Run the dev environment:
+4. Init DB and run migrations and seed data:
+
+   ```bash
+   npm run prisma:deploy
+   npm run prisma:seed
+   ```
+
+5. Run the dev environment:
 
    ```bash
    npm run dev
