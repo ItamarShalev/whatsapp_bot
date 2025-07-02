@@ -1,13 +1,21 @@
 {
   "compilerOptions": {
     "rootDir": ".",
-    "moduleResolution": "nodenext",
-    "target": "es2020",
-    "module": "NodeNext",
     "outDir": "dist",
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "bundler",
     "strict": true,
+    "sourceMap": true,
     "esModuleInterop": true,
+    "allowImportingTsExtensions": true,
+    "noEmit": true,
+    "allowJs": true,
+    "checkJs": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
     "types": ["vitest/globals", "node"]
   },
-  "include": ["src", "tests"]
+  "include": ["src", "tests", "scripts", "vitest.config.ts"],
+  "exclude": ["node_modules", "dist"]
 }
