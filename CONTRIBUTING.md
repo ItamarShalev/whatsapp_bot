@@ -60,6 +60,26 @@ npm run format
 - [ ] The commit must end (before the sign-off) with `fixes=<sha1/unknown>`
 - [ ] Also `issue=<issue_number/none>`
 
+### Pre-commit Hooks
+- Pre-commit hooks are set up to run linting and tests before commits.
+- You can install pre-commit by install python and running:
+
+  ```bash
+  python -m pip install pre-commit
+  ```
+
+  if you want to run it manually, you can run:
+
+  ```bash
+  pre-commit run
+  ```
+
+  if you want to run it automatically, you can run:
+
+  ```bash
+  pre-commit install
+  ```
+
 ## 🚀 Submitting a Pull Request
 
 1. Create a feature or fix branch:  

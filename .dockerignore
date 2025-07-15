@@ -43,3 +43,9 @@ coverage
 
 # Log files.
 *.log
+
+# Ruff linter cache
+.ruff_cache/
+
+# Python virtual environment
+.venv/
