@@ -47,6 +47,13 @@ def parse_flags() -> list[bool]:
     # If no flags are set, enable all
     return args if any(args) else [True] * len(args)
 
+def _ignore_line(line: str):
+    allowed_patterns = [
+        r"^Merge [0-9a-fA-F]{40} into [0-9a-fA-F]{40}$",
+        r"^Signed-off-by: .+ <.+>$",
+    ]
+    return any(re.match(pattern, line.strip()) for pattern in allowed_patterns)
+
 def _check_length(title: str, body: str) -> list[str]:
     errors = []
     title_to_check = title
@@ -63,7 +70,7 @@ def _check_length(title: str, body: str) -> list[str]:
             "(excluding the 'Revert' prefix, if present)."
         )
 
-    if any(len(line) > MAX_LINE_LENGTH for line in body.splitlines()):
+    if any(len(line) > MAX_LINE_LENGTH and not _ignore_line(line) for line in body.splitlines()):
         errors.append(f"Commit body line exceeds {MAX_LINE_LENGTH} characters.")
 
     return errors
@@ -107,6 +114,22 @@ def _check_body_must_present(body: str) -> list[str]:
 
     return errors
 
+def _extract_title_body(commit_msg: str) -> tuple[str, str]:
+
+    title = ""
+    title_index = 0
+    lines = commit_msg.splitlines()
+
+    for i, line in enumerate(lines):
+        if not _ignore_line(line):
+            title = line
+            title_index = i
+            break
+    
+    body = "\n".join(lines[title_index + 1:]).strip() if title_index + 1 < len(lines) else ""
+    return title, body
+
+
 def main() -> None:
     logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
 
@@ -122,8 +145,11 @@ def main() -> None:
         errors.append("Commit message is empty.")
         print_errors_and_exit(errors)
 
-    title = lines[0]
-    body = "\n".join(lines[1:]).strip() if len(lines) > 1 else ""
+    title, body = _extract_title_body(commit_msg)
+    if title is None:
+        errors.append("No valid title found in commit message.")
+        print_errors_and_exit(errors)
+
 
     if body_must_present:
         new_errors = _check_body_must_present(body)
