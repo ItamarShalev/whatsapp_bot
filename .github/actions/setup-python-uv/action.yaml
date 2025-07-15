@@ -1,0 +1,29 @@
+name: Setup Environment
+description: Configure Python and Node.js environments using uv for commit message checks and other tests.
+
+runs:
+  using: "composite"
+  steps:
+    - name: Set Up uv
+      uses: astral-sh/setup-uv@v5
+      with:
+        enable-cache: true
+
+    - name: Set Up Python
+      uses: actions/setup-python@v5
+      with:
+        python-version-file: pyproject.toml
+
+    - name: Verify Python Version in uv.lock
+      shell: bash
+      run: uv lock --locked
+
+    - name: Install Python Dependencies
+      shell: bash
+      run: uv sync --locked --all-extras --dev
+
+    - name: Configure VIRTUAL_ENV
+      shell: bash
+      run: |
+        VENV_PATH="$(pwd)/.venv"
+        echo "VIRTUAL_ENV=$VENV_PATH" >> $GITHUB_ENV

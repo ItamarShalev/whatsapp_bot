@@ -1,0 +1,24 @@
+name: CI - Commit Message
+
+on:
+  push:
+    branches:
+      - main
+      - "test*"
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  check-commit-message:
+    name: Check Commit Message
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python and uv Machine
+        uses: ./.github/actions/setup-python-uv
+
+      - name: Check Commit Message
+        run: uv run pre-commit run commit-message
