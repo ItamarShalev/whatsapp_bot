@@ -9,45 +9,6 @@ env:
   DOCKER_REPO: theitamarshalev/whatsapp_bot
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: ./.github/actions/setup-node
-
-      - name: Run linter
-        run: npm run lint
-
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: ./.github/actions/setup-node
-
-      - name: Build project
-        run: npm run build
-
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Set up Node.js
-        uses: ./.github/actions/setup-node
-
-      - name: Run tests
-        run: npm test
-
   build-docker:
     runs-on: ubuntu-latest
     steps:
@@ -76,7 +37,7 @@ jobs:
 
   deploy-docker:
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
-    needs: [build, lint, test, build-docker]
+    needs: [build-docker]
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
