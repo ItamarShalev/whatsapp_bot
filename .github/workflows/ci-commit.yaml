@@ -2,12 +2,6 @@ name: CI - Commit Message
 
 on:
   push:
-    branches:
-      - main
-      - "test*"
-  pull_request:
-    branches:
-      - main
 
 jobs:
   check-commit-message:
