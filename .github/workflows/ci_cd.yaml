@@ -4,9 +4,9 @@ on:
   push:
   pull_request:
 
+
 env:
-  DOCKER_USERNAME: theitamarshalev
-  DOCKER_REPO: theitamarshalev/whatsapp_bot
+  DOCKER_FULL_REPO: ${{ vars.DOCKER_USERNAME }}/${{ vars.DOCKER_REPO }}
 
 jobs:
   build-docker:
@@ -21,19 +21,19 @@ jobs:
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
-          username: ${{ env.DOCKER_USERNAME }}
+          username: ${{ vars.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build Docker image with tags
         run: >
           docker build
-          -t ${{ env.DOCKER_REPO }}:latest
-          -t ${{ env.DOCKER_REPO }}:${{ github.sha }}
+          -t ${{ env.DOCKER_FULL_REPO }}:latest
+          -t ${{ env.DOCKER_FULL_REPO }}:${{ github.sha }}
           .
 
       - name: Push Docker image to remote registry with the sha1
         run: |
-          docker push ${{ env.DOCKER_REPO }}:${{ github.sha }}
+          docker push ${{ env.DOCKER_FULL_REPO }}:${{ github.sha }}
 
   deploy-docker:
     if: ${{ github.event_name == 'push' && github.ref == 'refs/heads/main' }}
@@ -49,17 +49,17 @@ jobs:
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
-          username: ${{ env.DOCKER_USERNAME }}
+          username: ${{ vars.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Pull Docker image with SHA tag
         run: |
-          docker pull ${{ env.DOCKER_REPO }}:${{ github.sha }}
+          docker pull ${{ env.DOCKER_FULL_REPO }}:${{ github.sha }}
 
       - name: Tag image as latest
         run: |
-          docker tag ${{ env.DOCKER_REPO }}:${{ github.sha }} ${{ env.DOCKER_REPO }}:latest
+          docker tag${{ env.DOCKER_FULL_REPO }}:${{ github.sha }} ${{ env.DOCKER_FULL_REPO }}:latest
 
       - name: Push latest Docker tag
         run: |
-          docker push ${{ env.DOCKER_REPO }}:latest
+          docker push ${{ env.DOCKER_FULL_REPO }}:latest
