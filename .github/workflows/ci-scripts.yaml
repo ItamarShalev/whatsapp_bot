@@ -1,0 +1,38 @@
+name: CI - Scripts
+
+on:
+  push:
+    branches:
+      - main
+      - "test*"
+  pull_request:
+    branches:
+      - main
+
+jobs:
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python and uv Machine
+        uses: ./.github/actions/setup-python-uv
+
+      - name: Run Linter
+        run: uv run pre-commit run scripts-lint
+
+  static-check:
+    name: Static Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Python and uv Machine
+        uses: ./.github/actions/setup-python-uv
+
+      - name: Run Static Check
+        run: uv run pre-commit run scripts-static-check
