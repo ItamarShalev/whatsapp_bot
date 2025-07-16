@@ -22,5 +22,16 @@
   "Goodbye": "Au revoir",
   "Hello": "Bonjour",
   "Unknown": "Inconnu",
-  "Thank you": "Merci"
+  "Thank you": "Merci",
+  "Base Command for all other commands.": "Commande de base pour toutes les autres commandes.",
+  "ping": "ping",
+  "Checks if the bot is online by sending a 'pong' response.": "Vérifie si le bot est en ligne en envoyant une réponse 'pong'.",
+  "p": "sondage",
+  "Create and send a poll with multiple options": "Crée et envoie un sondage avec plusieurs options",
+  "!poll \"What's your favorite color?\" \"Red\" \"Blue\" \"Green\"": "!poll \"Quelle est ta couleur préférée ?\" \"Rouge\" \"Bleu\" \"Vert\"",
+  "poll": "sondage",
+  "welcome": "bienvenue",
+  "Sends a welcome message to a new user": "Envoie un message de bienvenue à un nouvel utilisateur",
+  "!welcome +1234567890": "!welcome +1234567890",
+  "!welcome @john": "!welcome @john"
 }

@@ -22,5 +22,16 @@
   "Goodbye": "להתראות",
   "Hello": "שלום",
   "Unknown": "לא ידוע",
-  "Thank you": "תודה"
+  "Thank you": "תודה",
+  "Base Command for all other commands.": "פקודת בסיס לכל שאר הפקודות.",
+  "ping": "פינג",
+  "Checks if the bot is online by sending a 'pong' response.": "בודק אם הבוט מחובר על ידי שליחת תגובת 'פונג'.",
+  "p": "פ",
+  "Create and send a poll with multiple options": "צור ושלח סקר עם אפשרויות מרובות",
+  "!poll \"What's your favorite color?\" \"Red\" \"Blue\" \"Green\"": "!poll \"מה הצבע האהוב עליך?\" \"אדום\" \"כחול\" \"ירוק\"",
+  "poll": "סקר",
+  "welcome": "ברוך הבא",
+  "Sends a welcome message to a new user": "שולח הודעת קבלת פנים למשתמש חדש",
+  "!welcome +1234567890": "!welcome +1234567890",
+  "!welcome @john": "!welcome @john"
 }
