@@ -8,7 +8,7 @@ We validate the environment variables using `zod`. Get the schema from `src/env.
 
 | Variable           | Required | Default                        | Description                                                          |
 | ------------------ | -------- | ------------------------------ | -------------------------------------------------------------------- |
-| ADMIN_PHONE_NUMBER | Yes      |                                | The phone number of the admin in E.164 format.                       |
+| ADMIN_PHONE_NUMBER | No       | +1234567890                    | The phone number of the admin in E.164 format.                       |
 | LANGUAGE           | No       | en                             | Specify the language for the templates, e.g., en, he.                |
 | COMMAND_PREFIX     | No       | !                              | The prefix for triggering the commands, e.g., !, /, .                |
 | LOG_FILE           | No       | ./logs/bot.log                 | The file to log the bot's activity.                                  |
