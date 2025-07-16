@@ -56,10 +56,25 @@ export abstract class CommandBase {
   }
 
   /**
-   * Returns the static config for the command.
+   * Returns the static config for the command with translated fields.
    */
   getConfig(): CommandConfig {
-    return (this.constructor as typeof CommandBase).config;
+    const { name, description, examples, aliases, ...config } = (
+      this.constructor as typeof CommandBase
+    ).config;
+
+    return {
+      ...config,
+      name: i18next.t(name),
+      description: i18next.t(description),
+      examples: [...new Set([...examples, ...examples.map((e) => i18next.t(e))])] as [
+        string,
+        ...string[],
+      ],
+      aliases: aliases?.flatMap((al) =>
+        env.LANGUAGES_AVAILABLE.map((lang) => i18next.t(al, { lang }))
+      ),
+    };
   }
 
   /**
