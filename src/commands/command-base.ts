@@ -15,8 +15,7 @@ export const DEFAULT_COMMAND_CONFIG: Omit<CommandConfig, "name" | "description" 
  * All commands should extend this class.
  */
 export abstract class CommandBase {
-  // Make config static
-  static config: CommandConfig = {
+  protected static config: CommandConfig = {
     ...DEFAULT_COMMAND_CONFIG,
     name: "",
     description: "Base Command for all other commands.",

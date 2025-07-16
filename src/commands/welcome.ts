@@ -5,7 +5,7 @@ import { CommandBase, DEFAULT_COMMAND_CONFIG } from "./command-base";
 import { logger } from "../lib/logger";
 
 export default class Welcome extends CommandBase {
-  static config: CommandConfig = {
+  protected static config: CommandConfig = {
     ...DEFAULT_COMMAND_CONFIG,
     name: "welcome",
     description: "Sends a welcome message to a new user",
