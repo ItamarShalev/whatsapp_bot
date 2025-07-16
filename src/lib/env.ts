@@ -14,7 +14,10 @@ const appVariables = {
 const envSchema = z.object({
   LANGUAGE: z.enum(appVariables.LANGUAGES_AVAILABLE).default("en"),
   COMMAND_PREFIX: z.string().max(1).min(1).default("!"),
-  ADMIN_PHONE_NUMBER: z.string().regex(/^\+[1-9]\d{1,14}$/, "Invalid E.164 phone number format"),
+  ADMIN_PHONE_NUMBER: z
+    .string()
+    .regex(/^\+[1-9]\d{1,14}$/, "Invalid E.164 phone number format")
+    .default("+1234567890"),
   LOG_FILE: z.string().default("logs/bot.log"),
   LOG_LEVEL: z.enum(["error", "warn", "info", "verbose", "debug", "silly"]).default("info"),
   SESSION_PATH: z.string().default("session"),
