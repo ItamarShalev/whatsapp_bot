@@ -6,16 +6,16 @@ Whatsapp bot for community and group management.
 
 We validate the environment variables using `zod`. Get the schema from `src/env.ts`. See the example at `env.example`.
 
-| Variable           | Required | Default                        | Description                                                          |
-| ------------------ | -------- | ------------------------------ | -------------------------------------------------------------------- |
-| ADMIN_PHONE_NUMBER | No       | +1234567890                    | The phone number of the admin in E.164 format.                       |
-| LANGUAGE           | No       | en                             | Specify the language for the templates, e.g., en, he.                |
-| COMMAND_PREFIX     | No       | !                              | The prefix for triggering the commands, e.g., !, /, .                |
-| LOG_FILE           | No       | ./logs/bot.log                 | The file to log the bot's activity.                                  |
-| LOG_LEVEL          | No       | info                           | The log level: `error`, `warn`, `info`, `verbose`, `debug`, `silly`. |
-| SESSION_PATH       | No       | ./session                      | The path to store the session data.                                  |
-| CMD_TIMEOUT        | No       | `30s`                          | Timeout for the command to be dispatched (avoid stale commands).     |
-| DATABASE_URL       | No       | `file:../data/database.sqlite` | The URL of the database to use, in SQLite file path format.          |
+| Variable           | Default                        | Description                                                          |
+| ------------------ | ------------------------------ | -------------------------------------------------------------------- |
+| ADMIN_PHONE_NUMBER | +1234567890                    | The phone number of the admin in E.164 format.                       |
+| LANGUAGE           | en                             | Specify the language for the templates, e.g., en, he.                |
+| COMMAND_PREFIX     | !                              | The prefix for triggering the commands, e.g., !, /, .                |
+| LOG_FILE           | ./logs/bot.log                 | The file to log the bot's activity.                                  |
+| LOG_LEVEL          | info                           | The log level: `error`, `warn`, `info`, `verbose`, `debug`, `silly`. |
+| SESSION_PATH       | ./session                      | The path to store the session data.                                  |
+| CMD_TIMEOUT        | `30s`                          | Timeout for the command to be dispatched (avoid stale commands).     |
+| DATABASE_URL       | `file:../data/database.sqlite` | The URL of the database to use, in SQLite file path format.          |
 
 ## Commands Available
 
