@@ -15,8 +15,7 @@ export const DEFAULT_COMMAND_CONFIG: Omit<CommandConfig, "name" | "description" 
  * All commands should extend this class.
  */
 export abstract class CommandBase {
-  // Make config static
-  static config: CommandConfig = {
+  protected static config: CommandConfig = {
     ...DEFAULT_COMMAND_CONFIG,
     name: "",
     description: "Base Command for all other commands.",
@@ -57,10 +56,25 @@ export abstract class CommandBase {
   }
 
   /**
-   * Returns the static config for the command.
+   * Returns the static config for the command with translated fields.
    */
   getConfig(): CommandConfig {
-    return (this.constructor as typeof CommandBase).config;
+    const { name, description, examples, aliases, ...config } = (
+      this.constructor as typeof CommandBase
+    ).config;
+
+    return {
+      ...config,
+      name: i18next.t(name),
+      description: i18next.t(description),
+      examples: [...new Set([...examples, ...examples.map((e) => i18next.t(e))])] as [
+        string,
+        ...string[],
+      ],
+      aliases: aliases?.flatMap((al) =>
+        env.LANGUAGES_AVAILABLE.map((lang) => i18next.t(al, { lang }))
+      ),
+    };
   }
 
   /**

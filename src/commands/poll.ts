@@ -5,10 +5,10 @@ import { logger } from "../lib/logger";
 import z from "zod";
 
 export default class Poll extends CommandBase {
-  static config: CommandConfig = {
+  protected static config: CommandConfig = {
     ...DEFAULT_COMMAND_CONFIG,
     description: "Create and send a poll with multiple options",
-    examples: ['!poll "What\'s your favorite color?" "Red" "Blue" "Green"'],
+    examples: [`!poll "What's your favorite color?" "Red" "Blue" "Green"`],
     name: "poll",
   } as const;
 

@@ -3,8 +3,8 @@ import { CommandConfig, CommandHandler } from "../types";
 import { CommandBase, DEFAULT_COMMAND_CONFIG } from "./command-base";
 import { logger } from "../lib/logger";
 
-export class Ping extends CommandBase {
-  static config: CommandConfig = {
+export default class Ping extends CommandBase {
+  protected static config: CommandConfig = {
     ...DEFAULT_COMMAND_CONFIG,
     name: "ping",
     description: "Checks if the bot is online by sending a 'pong' response.",
